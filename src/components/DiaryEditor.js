@@ -1,5 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { DiaryDispatchContext } from "../App";
 
 import EmotionItem from "./EmotionItem";
@@ -58,8 +59,8 @@ const DiaryEditor = () => {
       return;
     }
 
-    onCreate(date, content, emotion);
-    navigate("/", { replace: true });
+    onCreate(date, content, emotion); //일기를 작성하게되면 App컴포넌테가 가지고있는 일기데이터 state에 추가해줘야 하기때문에 onCreate함수를 실행시켜줘야함.
+    navigate("/", { replace: true }); //홈으로가서 다시 돌아오지 못하도록 옵션 {replace: true}를 해준다.
   };
 
   return (
@@ -109,7 +110,11 @@ const DiaryEditor = () => {
         <section>
           <div className="control_box">
             <MyButton text={"취소하기"} onClick={() => navigate(-1)} />
-            <MyButton text={"작성완료"} type={"positive"} onClick={() => {}} />
+            <MyButton
+              text={"작성완료"}
+              type={"positive"}
+              onClick={handleSubmit}
+            />
           </div>
         </section>
       </div>
