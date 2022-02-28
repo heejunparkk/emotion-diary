@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { DiaryDispatchContext } from "../App";
+import { getStringDate } from "../util/date";
 
 import EmotionItem from "./EmotionItem";
 import MyButton from "./MyButton";
@@ -34,10 +35,6 @@ const emotionList = [
     emotion_descript: "끔찍함",
   },
 ];
-
-const getStringDate = (date) => {
-  return date.toISOString().slice(0, 10);
-};
 
 const DiaryEditor = ({ isEdit, originData }) => {
   const contentRef = useRef();
