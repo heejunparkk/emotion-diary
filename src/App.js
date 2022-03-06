@@ -48,9 +48,10 @@ function App() {
         (a, b) => parseInt(b.id) - parseInt(a.id)
       ); //JSON.parse로 직렬화되있던 배열을 복원시켜줌
 
-      dataId.current = parseInt(diaryList[0].id) + 1;
-
-      dispatch({ type: "INIT", data: diaryList });
+      if (diaryList.length >= 1) {
+        dataId.current = parseInt(diaryList[0].id) + 1;
+        dispatch({ type: "INIT", data: diaryList });
+      }
     }
   }, []);
 
